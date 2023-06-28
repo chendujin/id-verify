@@ -22,10 +22,38 @@ composer require "chendujin/id-verify"
 
 > 注：如果 require 失败，解决方案见 [#13](https://github.com/jxlwqq/id-validator/pull/13)。
 
+## 配置
+### Laravel无需配置
+### Lumen
+将下面代码放入 `bootstrap/app.php`
+```php
+$app->register(Chendujin\IdValidator\ServiceProvider::class);
+```
+
 ## 使用
 
 > `440308199901101512` 和 `610104620927690` 示例大陆居民身份证均为随机生成的假数据，如撞车，请联系删除。
 > `810000199408230021` 和 `830000199201300022` 示例港澳台居民居住证为北京市公安局公布的居住证样式号码。
+
+### 在验证器中使用
+```php
+<?php
+
+public function store(Request $request)
+{
+    $validator = Validator::make($request->all(), [
+        'id_number' => 'required|id_verify'
+    ]);
+   
+    if ($validator->fails()) {
+        return new JsonResponse([
+            'state' => 'error',
+            'message' => $validator->errors()->first(),
+        ]);
+    }   
+
+}
+```
 
 ### 验证身份证号合法性
 
@@ -113,21 +141,6 @@ $idValidator->upgradeId('610104620927690'); // 15 位号码升级为 18 位
 * [国务院办公厅关于印发《港澳台居民居住证申领发放办法》的通知](http://www.gov.cn/zhengce/content/2018-08/19/content_5314865.htm)
 
 * [港澳台居民居住证](https://zh.wikipedia.org/wiki/港澳台居民居住证)
-
-## Change Log
-* 1.1.0 身份证号返回信息新增生肖和星座内容；
-
-* 1.2.0 支持港澳台居民居住证；
-
-* 1.3.0 行政区划代码（地址码）数据改由从中华人民共和国民政部官方网站获取；
-
-* 1.4.0 支持查询因行政区变更而废弃的地址码；
-
-* 1.4.2 `fakeId()` 方法增加可选参数；
-
-* 1.4.11 支持 15 位身份证号码升级为 18 位；
-
-* 1.4.18 `getInfo()` 返回值新增省市区三级列表
 
 ## License
 MIT
