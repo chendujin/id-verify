@@ -1,6 +1,6 @@
 <?php
 
-namespace Jxlwqq\IdValidator;
+namespace Chendujin\IdValidator;
 
 use DateTime;
 

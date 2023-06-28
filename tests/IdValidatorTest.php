@@ -1,14 +1,14 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: jxlwqq
+ * User: Chendujin
  * Date: 2018/9/6
  * Time: 21:51.
  */
 
-namespace Jxlwqq\IdValidator\Tests;
+namespace Chendujin\IdValidator\Tests;
 
-use Jxlwqq\IdValidator\IdValidator;
+use Chendujin\IdValidator\IdValidator;
 use PHPUnit\Framework\TestCase;
 
 class IdValidatorTest extends TestCase

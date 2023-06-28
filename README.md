@@ -17,7 +17,7 @@
 ## 安装
 
 ```bash
-composer require "jxlwqq/id-validator"
+composer require "chendujin/id-verify"
 ```
 
 > 注：如果 require 失败，解决方案见 [#13](https://github.com/jxlwqq/id-validator/pull/13)。
@@ -32,7 +32,7 @@ composer require "jxlwqq/id-validator"
 验证身份证号是否合法，合法返回 `true`，不合法返回 `false`：
 
 ```php
-use Jxlwqq\IdValidator\IdValidator;
+use chendujin\IdValidator\IdValidator;
 
 $idValidator = new IdValidator();
 $idValidator->isValid('440308199901101512'); // 大陆居民身份证 18 位
@@ -45,7 +45,7 @@ $idValidator->isValid('830000199201300022'); // 台湾居民居住证 18 位
 
 当身份证号合法时，返回分析信息（地区、出生日期、星座、生肖、性别、校验位），不合法返回 `false`：
 ```php
-use Jxlwqq\IdValidator\IdValidator;
+use chendujin\IdValidator\IdValidator;
 
 $idValidator = new IdValidator();
 $idValidator->getInfo('440308199901101512'); // 18 位
@@ -80,7 +80,7 @@ $idValidator->getInfo('610104620927690');    // 15 位
 * `$sex` 性别，1 为男性，0 为女性，默认或参数非法，则生成合法的随机性别；
 
 ```php
-use Jxlwqq\IdValidator\IdValidator;
+use chendujin\IdValidator\IdValidator;
 
 $idValidator = new IdValidator();
 $idValidator->fakeId();                                    // 18 位
@@ -96,7 +96,7 @@ $idValidator->fakeId(true, '香港特别行政区', '19970701', 0); // 生成出
 ### 升级身份证号码
 15 位号码升级为 18 位：
 ```php
-use Jxlwqq\IdValidator\IdValidator;
+use chendujin\IdValidator\IdValidator;
 
 $idValidator = new IdValidator();
 $idValidator->upgradeId('610104620927690'); // 15 位号码升级为 18 位

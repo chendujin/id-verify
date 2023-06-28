@@ -1,31 +1,41 @@
 {
-    "name": "jxlwqq/id-validator",
+    "name": "chendujin/id-verify",
     "description": "Chinese Mainland Personal ID Card Validation",
     "type": "library",
     "license": "MIT",
     "authors": [
         {
-            "name": "jxlwqq",
-            "email": "jxlwqq@gmail.com",
-            "homepage": "https://jxlwqq.github.io"
-
+            "name": "chendujin",
+            "email": "thomas.chen.jobs@gmail.com",
+            "homepage": "https://chendujin.com"
         }
     ],
     "require": {
-        "php": ">=5.6.0"
+        "php": ">=5.6.0",
+        "illuminate/support": "~5|^6|^7|^8|^9"
     },
     "autoload": {
         "psr-4": {
-            "Jxlwqq\\IdValidator\\": "src/"
+            "Chendujin\\IdValidator\\": "src/"
         }
     },
     "autoload-dev": {
        "psr-4": {
-         "Jxlwqq\\IdValidator\\Tests\\" : "tests/"
+         "Chendujin\\IdValidator\\Tests\\" : "tests/"
        }
     },
     "require-dev": {
         "phpunit/phpunit": ">=5.6"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.00-dev"
+        },
+        "laravel": {
+            "providers": [
+                "Chendujin\\IdValidator\\ServiceProvider"
+            ]
+        }
     },
     "scripts": {
         "test": "./vendor/bin/phpunit"
